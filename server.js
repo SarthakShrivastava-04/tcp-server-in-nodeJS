@@ -1,12 +1,13 @@
 import net from 'net';
 
 const server = net.createServer((socket) => {
-    CSSConditionRule.log("client connected");
+    console.log("client connected");
+    socket.write(`Hello from tcp server\r\n`);
 
     socket.on('data', (data) => {
         console.log(`Received data: ${data}`);
 
-        socket.write(`echo: ${data}`);
+        socket.write(`echo: ${data}\r\n`);
     });
 
     socket.on('end', () => {
